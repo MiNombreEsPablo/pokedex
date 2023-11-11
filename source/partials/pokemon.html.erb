@@ -1,0 +1,15 @@
+<% url = 'https://pokeapi.co/api/v2/pokemon/charizard' %>
+<% pokemon_serialized = URI.open(url).read %>
+<% pokemon = JSON.parse(pokemon_serialized) %>
+
+<h1><%= "#{pokemon["name"].capitalize}" %></h1>
+<% types = pokemon["types"] %>
+
+<img src="<%= pokemon['sprites']['front_default'] %>" alt="<%= pokemon["name"] %>">
+
+<h3>Types</h3>
+<ul>
+  <% types.each do |type| %>
+    <li><%= "#{type["type"]["name"].capitalize}" %></li>
+  <% end %>
+</ul>
